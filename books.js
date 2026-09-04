@@ -39,16 +39,11 @@ async function renderBooks(filter)
 {
   const booksWrapper = document.querySelector(".books");
 
-  if( !books )
-  {
-    // while awaiting, show the spinner
-//    booksWrapper.classList += " books__loading";
-
-    // after showing the spinner, await the books
+  booksWrapper.classList += " books__loading";
+  if( !books ) {
     books = await getBooks();
   }
-
-  booksWrapper.remove("books__loading");
+  booksWrapper.classList.remove("books__loading");
 
   console.log("renderBooks() wrapper = ", booksWrapper, "books = ", books);
   let priceOrg = 0;
